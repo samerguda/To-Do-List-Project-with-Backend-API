@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Project with Backend API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        pre {
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>To-Do List Project with Backend API</h1>
+
+<table>
+    <tr>
+        <th>Step</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>1.1</td>
+        <td>Set Up Your Backend with Express.js<br><strong>Initialize a New Node.js Project</strong><br>
+            <pre><code>mkdir todo-backend<br>cd todo-backend<br>npm init -y</code></pre>
+            This will create a <code>package.json</code> file with the default settings.
+        </td>
+    </tr>
+    <tr>
+        <td>1.2</td>
+        <td><strong>Install Required Packages</strong><br>
+            <pre><code>npm install express</code></pre>
+            Optionally, install <code>nodemon</code> for automatic server restarts during development:<br>
+            <pre><code>npm install --save-dev nodemon</code></pre>
+            Add a script in your <code>package.json</code> to use <code>nodemon</code>:
+            <pre><code>"scripts": {<br>  "start": "node index.js",<br>  "dev": "nodemon index.js"<br>}</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>1.3</td>
+        <td><strong>Create a Basic Express Server</strong><br>Create a new file called <code>index.js</code>:
+            <pre><code>touch index.js</code></pre>
+            Set up a basic Express server in <code>index.js</code>:
+            <pre><code>const express = require('express');<br>const app = express();<br>const PORT = process.env.PORT || 3000;<br><br>app.use(express.json());<br><br>app.listen(PORT, () => {<br>    console.log(`Server is running on http://localhost:${PORT}`);<br>});</code></pre>
+            Run your server:
+            <pre><code>npm run dev</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>2.1</td>
+        <td><strong>Create an In-Memory Data Store</strong><br>
+            <pre><code>let todos = [];</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>2.2</td>
+        <td><strong>Set Up CRUD Routes</strong><br><em>Create a New To-Do Item (POST)</em>:
+            <pre><code>app.post('/todos', (req, res) => {<br>    const todo = req.body;<br>    todo.id = Date.now().toString();<br>    todos.push(todo);<br>    res.status(201).json(todo);<br>});</code></pre>
+        </td>
+    </tr>
+    <!-- Continue adding rows for each step -->
+</table>
+
+</body>
+</html>
